@@ -7,7 +7,7 @@ Simple dashboard of networked WeMo Switches.
 ```
 $ git clone https://github.com/mnoble/wemo.git
 $ cd wemo
-$ bundle install
+bin/setup
 ```
 
 ### Dashboard Usage
