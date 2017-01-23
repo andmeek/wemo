@@ -10,10 +10,13 @@ $ cd wemo
 bin/setup
 ```
 
-### Dashboard Usage
+### CLI Usage
 
 ```
-$ rackup
+$ thor list           # list commands
+$ thor list_devices   # list devices and their state
+$ thor turn_on        # turn on all devices
+$ thor turn_off       # turn off all devices
 ```
 
 ### The API
