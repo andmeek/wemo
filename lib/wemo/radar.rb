@@ -14,7 +14,7 @@ module Wemo
     private
 
     def locations
-      UPnP::SSDP.search(device_type).uniq.map { |attrs| without_path(attrs[:location]) }
+      Frisky::SSDP.search(device_type).uniq.map { |attrs| without_path(attrs[:location]) }
     end
 
     def without_path(uri)
