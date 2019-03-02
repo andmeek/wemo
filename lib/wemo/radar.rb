@@ -2,7 +2,7 @@ module Wemo
   class Radar
     attr_accessor :device_type, :repository
 
-    def initialize(device_type, repository)
+    def initialize(device_type = "urn:Belkin:device:controllee:1", repository = Wemo::Repository)
       @device_type = device_type
       @repository = repository
     end

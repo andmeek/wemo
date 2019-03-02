@@ -5,7 +5,7 @@ require_relative "lib/wemo"
 class Default < Thor
   desc "list_devices", "List available WeMo devices"
   def list_devices
-    Wemo::Radar.new("urn:Belkin:device:controllee:1", Wemo::Repository).scan
+    Wemo::Radar.new.scan
 
     say
     say "Found #{Wemo::Repository.devices.length} devices"
@@ -20,7 +20,7 @@ class Default < Thor
 
   desc "turn_on", "Turn on all devices"
   def turn_on
-    Wemo::Radar.new("urn:Belkin:device:controllee:1", Wemo::Repository).scan
+    Wemo::Radar.new.scan
 
     Wemo::Repository.devices.each do |device|
       device.on!
