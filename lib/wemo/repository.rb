@@ -7,11 +7,20 @@ module Wemo
     end
 
     def add(device)
-      devices << device
+      index = devices.find_index { |d| d.location == device.location }
+      if index.nil?
+        devices << device
+      else
+        devices[index] = device
+      end
     end
 
     def devices
       @devices ||= []
+    end
+
+    def clear
+      @devices.delete_if { true }
     end
   end
 end
