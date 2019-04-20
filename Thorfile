@@ -5,7 +5,8 @@ require_relative "lib/wemo"
 class Default < Thor
   desc "list_devices", "List available WeMo devices"
   def list_devices
-    Wemo::Radar.new.scan
+    radar = Wemo::Radar.new
+    radar.scan
 
     say
     say "Found #{Wemo::Repository.devices.length} devices"
@@ -16,6 +17,16 @@ class Default < Thor
     end
 
     print_table [["Name", "URL", "State"]] + table
+
+    unless radar.bad_locations.empty?
+      say
+      say "Unable to parse the following wemos, recommend restarting the device:"
+      say
+
+      radar.bad_locations.each do |location, _|
+        say location
+      end
+    end
   end
 
   desc "turn_on", "Turn on all devices"

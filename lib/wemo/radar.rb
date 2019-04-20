@@ -8,7 +8,17 @@ module Wemo
     end
 
     def scan
-      locations.map { |location| repository.add Wemo::Switch.new(location) }
+      locations.map do |location|
+        begin
+          repository.add Wemo::Switch.new(location)
+        rescue => e
+          bad_locations[location] = e
+        end
+      end
+    end
+
+    def bad_locations
+      @bad_locations ||= {}
     end
 
     private
